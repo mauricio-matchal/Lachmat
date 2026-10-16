@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siFacebook, siInstagram, siYoutube, type SimpleIcon } from "simple-icons";
 import { LogoSymbol } from "@/components/brand/logo";
+import { Marquee } from "@/components/layout/Marquee";
 
 function SocialIcon({ icon, href }: { icon: SimpleIcon; href: string }) {
     return (
@@ -15,7 +16,8 @@ function SocialIcon({ icon, href }: { icon: SimpleIcon; href: string }) {
 export function Footer() {
     return (
         <>
-            <footer className="bg-surface">
+            <footer className="bg-surface pt-2">
+                <Marquee text="#LACHMAT.COM.BR" />
                 <div className="flex flex-col gap-10 max-w-[1240px] px-12 py-8 mx-auto">
                     <div className="grid grid-cols-[auto_1fr_auto] gap-14">
                         <div className="flex flex-col gap-1.5">

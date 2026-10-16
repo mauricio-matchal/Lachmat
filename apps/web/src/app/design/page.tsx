@@ -1,4 +1,5 @@
 import { LogoSymbol, LogoWordmark } from "@/components/brand/logo";
+import { SFSymbol } from "@/components/icons/SFSymbol";
 
 const textStyles = [
   { className: "type-title", label: "Title", sample: "Ofertas do dia" },
@@ -45,6 +46,12 @@ export default function DesignPage() {
           <LogoWordmark className="h-4 w-auto" />
           <LogoSymbol className="h-4 w-auto" />
         </div>
+      </section>
+
+      <section className="mb-12 flex items-center gap-6">
+        <SFSymbol name="magnifyingglass" className="text-[19px]" />
+        <SFSymbol name="slider.horizontal.3" className="text-[19px]" />
+        <SFSymbol name="bag" className="text-[19px]" />
       </section>
 
       <section className="flex flex-wrap gap-4">

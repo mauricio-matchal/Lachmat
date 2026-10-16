@@ -1,6 +1,7 @@
 import Link from "next/link" 
 import { LogoWordmark } from "../brand/logo"
 import { SFSymbol } from "../icons/SFSymbol"
+import { CartButton } from "./CartButton"
 
 export function Header() {
     return (
@@ -18,10 +19,7 @@ export function Header() {
                         <Link href="/admin" aria-label="Gestão de produtos" className="flex size-12 items-center justify-center">
                             <SFSymbol name="slider.horizontal.3" className="text-[19px]" />
                         </Link>
-                        <Link href="/cart" aria-label="Carrinho" className="flex h-12 items-center gap-1.5 px-3">
-                            <SFSymbol name="bag" className="text-[19px]" />
-                            <span className="font-condensed text-[19px] font-semibold">0</span>
-                        </Link>
+                        <CartButton />
                     </div>
                 </div>
             </header>

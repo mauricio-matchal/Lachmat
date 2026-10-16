@@ -26,7 +26,10 @@ export const sfProCondensed = localFont({
 });
 
 export const sfProExpanded = localFont({
-  src: [{ path: "./sf-pro-expanded-black.woff2", weight: "900" }],
+  src: [
+    { path: "./sf-pro-expanded-bold.woff2", weight: "700" },
+    { path: "./sf-pro-expanded-black.woff2", weight: "900" },
+  ],
   variable: "--font-sf-pro-expanded",
   display: "swap",
 });

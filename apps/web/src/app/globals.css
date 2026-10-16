@@ -10,6 +10,15 @@
   --color-discount: #f33321;
   --color-success: #34c759;
   --color-success-bg: #def5df;
+
+  /* Animations */
+  --animate-marquee: marquee 120s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 /* Font families, loaded with next/font in src/fonts */

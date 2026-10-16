@@ -18,7 +18,7 @@ export function Footer() {
         <>
             <footer className="bg-surface pt-2">
                 <Marquee text="#LACHMAT.COM.BR" />
-                <div className="flex flex-col gap-10 max-w-[1240px] px-12 py-7 mx-auto">
+                <div className="flex flex-col gap-10 max-w-[1320px] px-12 py-7 mx-auto">
                     <div className="grid grid-cols-[auto_1fr_auto] gap-14">
                         <div className="flex flex-col gap-1.5">
                             <h2 className="type-footnote pb-1">Encontre nossas lojas</h2>

@@ -19,6 +19,16 @@
       transform: translateX(-50%);
     }
   }
+
+  --animate-tick: tick 0.35s ease-out;
+
+  @keyframes tick {
+    from {
+      filter: blur(6px);
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+  }
 }
 
 /* Font families, loaded with next/font in src/fonts */

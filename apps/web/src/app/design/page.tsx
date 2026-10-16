@@ -1,3 +1,5 @@
+import { LogoSymbol, LogoWordmark } from "@/components/brand/logo";
+
 const textStyles = [
   { className: "type-title", label: "Title", sample: "Ofertas do dia" },
   { className: "type-title-2", label: "Title 2", sample: "Você também pode gostar" },
@@ -34,6 +36,15 @@ export default function DesignPage() {
             <p className={style.className}>{style.sample}</p>
           </div>
         ))}
+      </section>
+
+      <section className="mb-12 flex flex-wrap items-center gap-6">
+        <LogoWordmark className="h-4 w-auto" />
+        <LogoSymbol className="h-4 w-auto" />
+        <div className="flex items-center gap-6 bg-ink p-4 text-lime">
+          <LogoWordmark className="h-4 w-auto" />
+          <LogoSymbol className="h-4 w-auto" />
+        </div>
       </section>
 
       <section className="flex flex-wrap gap-4">

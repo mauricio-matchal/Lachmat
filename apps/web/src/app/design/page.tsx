@@ -3,16 +3,86 @@ import { SFSymbol } from "@/components/icons/SFSymbol";
 
 // Specs mirror the type-* utilities in globals.css; keep both in sync
 const textStyles = [
-  { className: "type-title", label: "Title", sample: "Ofertas do dia", weight: 800, size: "32px", lineHeight: "1.15" },
-  { className: "type-title-2", label: "Title 2", sample: "Você também pode gostar", weight: 800, size: "28px", lineHeight: "1.15" },
-  { className: "type-title-3", label: "Title 3", sample: "R$ 161,49", weight: 900, size: "24px", lineHeight: "1.2" },
-  { className: "type-button", label: "Button", sample: "Editar detalhes", weight: 500, size: "16px", lineHeight: "1.25" },
-  { className: "type-subbutton", label: "Subbutton", sample: "Adicionar ao carrinho", weight: 500, size: "16px", lineHeight: "1.25" },
-  { className: "type-body", label: "Body", sample: "Camiseta Hyverse Dri-FIT Masculina", weight: 400, size: "16px", lineHeight: "1.35" },
-  { className: "type-subbody", label: "Subbody", sample: "Academia", weight: 400, size: "16px", lineHeight: "1.35" },
-  { className: "type-footnote", label: "Footnote", sample: "Lançamentos · Ofertas · Masculino", weight: 400, size: "16px", lineHeight: "1.3" },
-  { className: "type-subfootnote", label: "Subfootnote", sample: "Política de Privacidade", weight: 600, size: "14px", lineHeight: "1.3" },
-  { className: "type-caption", label: "Caption", sample: "Entregar para este endereço", weight: 400, size: "14px", lineHeight: "1.3" },
+  {
+    className: "type-title",
+    label: "Title",
+    sample: "Ofertas do dia",
+    weight: 800,
+    size: "32px",
+    lineHeight: "1.15",
+  },
+  {
+    className: "type-title-2",
+    label: "Title 2",
+    sample: "Você também pode gostar",
+    weight: 800,
+    size: "28px",
+    lineHeight: "1.15",
+  },
+  {
+    className: "type-title-3",
+    label: "Title 3",
+    sample: "R$ 161,49",
+    weight: 900,
+    size: "24px",
+    lineHeight: "1.2",
+  },
+  {
+    className: "type-button",
+    label: "Button",
+    sample: "Editar detalhes",
+    weight: 500,
+    size: "16px",
+    lineHeight: "1.25",
+  },
+  {
+    className: "type-subbutton",
+    label: "Subbutton",
+    sample: "Adicionar ao carrinho",
+    weight: 500,
+    size: "16px",
+    lineHeight: "1.25",
+  },
+  {
+    className: "type-body",
+    label: "Body",
+    sample: "Camiseta Hyverse Dri-FIT Masculina",
+    weight: 400,
+    size: "16px",
+    lineHeight: "1.35",
+  },
+  {
+    className: "type-subbody",
+    label: "Subbody",
+    sample: "Academia",
+    weight: 400,
+    size: "16px",
+    lineHeight: "1.35",
+  },
+  {
+    className: "type-footnote",
+    label: "Footnote",
+    sample: "Lançamentos · Ofertas · Masculino",
+    weight: 400,
+    size: "16px",
+    lineHeight: "1.3",
+  },
+  {
+    className: "type-subfootnote",
+    label: "Subfootnote",
+    sample: "Política de Privacidade",
+    weight: 600,
+    size: "14px",
+    lineHeight: "1.3",
+  },
+  {
+    className: "type-caption",
+    label: "Caption",
+    sample: "Entregar para este endereço",
+    weight: 400,
+    size: "14px",
+    lineHeight: "1.3",
+  },
 ];
 
 const colors = [
@@ -29,19 +99,23 @@ const colors = [
 export default function DesignPage() {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-12">
-      <h1 className="type-title mb-10">Design system</h1>
+      <h1 className="mb-10 type-title">Design system</h1>
 
       <section className="mb-12 flex flex-col gap-6">
         {textStyles.map((style) => (
-          <div key={style.label} className="flex items-end justify-between gap-6">
+          <div
+            key={style.label}
+            className="flex items-end justify-between gap-6"
+          >
             <div>
               <p className="type-caption text-ink/50">
                 {style.label} · <code>.{style.className}</code>
               </p>
               <p className={style.className}>{style.sample}</p>
             </div>
-            <p className="type-caption shrink-0 text-ink/50">
-              {style.size} · peso {style.weight} · altura da linha {style.lineHeight}
+            <p className="shrink-0 type-caption text-ink/50">
+              {style.size} · peso {style.weight} · altura da linha{" "}
+              {style.lineHeight}
             </p>
           </div>
         ))}
@@ -65,8 +139,10 @@ export default function DesignPage() {
       <section className="flex flex-wrap gap-4">
         {colors.map((color) => (
           <div key={color.label} className="flex flex-col gap-2">
-            <div className={`${color.className} size-20 border border-ink/10`} />
-            <p className="type-caption text-center">{color.label}</p>
+            <div
+              className={`${color.className} size-20 border border-ink/10`}
+            />
+            <p className="text-center type-caption">{color.label}</p>
           </div>
         ))}
       </section>

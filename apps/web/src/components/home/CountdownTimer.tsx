@@ -30,7 +30,10 @@ export function CountdownTimer() {
     // so throttled background tabs never drift
     const interval = setInterval(() => {
       const secondsLeft = Math.round((endsAt - Date.now()) / 1000);
-      setRemaining(((secondsLeft % DEAL_DURATION_SECONDS) + DEAL_DURATION_SECONDS) % DEAL_DURATION_SECONDS);
+      setRemaining(
+        ((secondsLeft % DEAL_DURATION_SECONDS) + DEAL_DURATION_SECONDS) %
+          DEAL_DURATION_SECONDS,
+      );
     }, 1000);
 
     return () => clearInterval(interval);
@@ -59,14 +62,17 @@ function TimeBox({ value, unit }: { value: number; unit: string }) {
   return (
     <span
       aria-hidden="true"
-      className="flex px-2.5 py-0.5 items-center justify-center bg-ink font-condensed text-[27px] font-bold tracking-[-0.5px] text-white tabular-nums"
+      className="flex items-center justify-center bg-ink px-2.5 py-0.5 font-condensed text-[27px] font-bold tracking-[-0.5px] text-white tabular-nums"
     >
       {pad(value)
         .split("")
         .map((digit, index) => (
           // The key changes only when this digit changes, so only that digit
           // remounts and replays the blur animation (like the "2" in the Figma)
-          <span key={`${index}-${digit}`} className="inline-block animate-tick will-change-[filter,transform,opacity] motion-reduce:animate-none">
+          <span
+            key={`${index}-${digit}`}
+            className="inline-block animate-tick will-change-[filter,transform,opacity] motion-reduce:animate-none"
+          >
             {digit}
           </span>
         ))}

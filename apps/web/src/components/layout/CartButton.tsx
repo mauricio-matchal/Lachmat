@@ -12,7 +12,7 @@ export function CartButton() {
     <Link
       href="/cart"
       aria-label="Carrinho"
-      className={`flex items-center gap-1.5 pl-3 py-2 pr-3 ${isActive ? "bg-input" : ""}`}
+      className={`flex items-center gap-1.5 py-2 pr-3 pl-3 ${isActive ? "bg-input" : ""}`}
     >
       <SFSymbol name="bag" className="text-[19px]" />
       <span className="font-condensed text-[19px] font-semibold">0</span>

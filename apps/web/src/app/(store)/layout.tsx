@@ -2,11 +2,11 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export default function StoreLayout({ children }: LayoutProps<"/">) {
-    return (
-        <>
-            <Header />
-                <main className="flex-1">{children}</main>  
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </>
+  );
 }

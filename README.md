@@ -13,6 +13,7 @@ Lachmat é um projeto de portfólio: a implementação fiel de um design do Figm
 ## Funcionalidades
 
 ### Loja
+
 - **Home** — banner principal com vídeo, ofertas relâmpago com contagem regressiva, banner de campanha sazonal, carrossel de mais vendidos e grade de lançamentos
 - **Busca e catálogo** — busca tolerante a acentos e erros de digitação, com filtros (cor, tamanho, categoria, preço, gênero e tecido), ordenação e paginação, tudo refletido na URL (compartilhável e compatível com o botão voltar)
 - **Páginas de categoria** — Lançamentos, Ofertas, Masculino, Feminino, Academia, Corrida, Skateboarding e Casual
@@ -22,13 +23,15 @@ Lachmat é um projeto de portfólio: a implementação fiel de um design do Figm
 - **Confirmação do pedido** e **Minhas Compras** (histórico de pedidos)
 
 ### Administração ("Gestão")
+
 - Grade de produtos com filtros e ordenação
 - Criação e edição de produtos: upload de 4 imagens, preços com desconto calculado automaticamente, categoria, gênero, modelo, gerador de SKU, variações de cor, tamanhos e estoque
-- Exclusão lógica (*soft delete*) com confirmação
+- Exclusão lógica (_soft delete_) com confirmação
 
 ### Em todo o app
+
 - Responsivo (desenhado em 393px no mobile e 1440px no desktop)
-- Acessível: HTML semântico, navegação por teclado, *focus trap* em modais, feedback com `aria-live`
+- Acessível: HTML semântico, navegação por teclado, _focus trap_ em modais, feedback com `aria-live`
 - SEO: renderização no servidor para páginas de produto e categoria, Open Graph, JSON-LD de `Product` e sitemap
 - Textos da interface em **português (pt-BR)** e preços em **reais** (`R$ 1.799,99`)
 
@@ -38,15 +41,15 @@ Lachmat é um projeto de portfólio: a implementação fiel de um design do Figm
 
 Visual editorial, com cantos retos (**border-radius 0** em todos os elementos), tipografia display larga e pesada e um verde-limão marcante como cor da marca.
 
-| Token | Hex | Uso |
-|---|---|---|
-| `brand-lime` | `#A9DE0D` | Cor da marca, CTAs principais, destaques |
-| `brand-black` | `#0A0A0B` | Barra de navegação, botões principais, barras de filtro, texto |
-| `surface` | `#F1F1F1` | Cards de produto, rodapé, linhas do carrinho |
-| `input-bg` | `#E6E6E6` | Campos de formulário |
-| `button-secondary` | `#DADADA` | Ações secundárias |
-| `discount-red` | `#F33321` | Selos de `% OFF`, erros de validação |
-| `success` | `#34C759` | Estado de sucesso do carrinho |
+| Token              | Hex       | Uso                                                            |
+| ------------------ | --------- | -------------------------------------------------------------- |
+| `brand-lime`       | `#A9DE0D` | Cor da marca, CTAs principais, destaques                       |
+| `brand-black`      | `#0A0A0B` | Barra de navegação, botões principais, barras de filtro, texto |
+| `surface`          | `#F1F1F1` | Cards de produto, rodapé, linhas do carrinho                   |
+| `input-bg`         | `#E6E6E6` | Campos de formulário                                           |
+| `button-secondary` | `#DADADA` | Ações secundárias                                              |
+| `discount-red`     | `#F33321` | Selos de `% OFF`, erros de validação                           |
+| `success`          | `#34C759` | Estado de sucesso do carrinho                                  |
 
 Componentes reutilizáveis: Header (5 estados), menu de categorias, menu mobile, rodapé com letreiro animado, ProductCard (4 variações), LaunchTile, Carrossel, Contagem regressiva, Modal, ConfirmDialog, Toast, Paginação, CreditCardPreview e primitivos de formulário.
 
@@ -69,18 +72,18 @@ Todos os valores do mockup foram conferidos com estas regras, e cada uma delas t
 
 ## Rotas
 
-| Rota | Página | Acesso |
-|---|---|---|
-| `/` | Home | público |
-| `/search?q=…` | Resultados da busca | público |
-| `/category/:slug` | Listagem por categoria | público |
-| `/product/:slug?color=…` | Detalhes do produto | público |
-| `/cart` | Carrinho | público |
-| `/checkout` | Checkout | usuário logado |
-| `/orders/:number/success` | Pedido concluído | dono do pedido |
-| `/orders` | Histórico de pedidos | usuário logado |
-| `/login`, `/signup` | Autenticação | público |
-| `/admin` | Gestão de produtos | admin |
+| Rota                      | Página                 | Acesso         |
+| ------------------------- | ---------------------- | -------------- |
+| `/`                       | Home                   | público        |
+| `/search?q=…`             | Resultados da busca    | público        |
+| `/category/:slug`         | Listagem por categoria | público        |
+| `/product/:slug?color=…`  | Detalhes do produto    | público        |
+| `/cart`                   | Carrinho               | público        |
+| `/checkout`               | Checkout               | usuário logado |
+| `/orders/:number/success` | Pedido concluído       | dono do pedido |
+| `/orders`                 | Histórico de pedidos   | usuário logado |
+| `/login`, `/signup`       | Autenticação           | público        |
+| `/admin`                  | Gestão de produtos     | admin          |
 
 ---
 
@@ -117,8 +120,8 @@ O projeto é um monorepo com o front (`apps/web`) e a API (`apps/api`) separados
 
 ## Qualidade
 
-- **Performance:** imagens otimizadas (WebP/AVIF, *lazy loading*), skeletons de carregamento, meta de Lighthouse ≥ 90 na home e na página de produto
-- **Segurança:** senhas com hash, proteção da área admin no servidor, validação de entrada e de uploads, *rate limit* na autenticação, dados de cartão nunca armazenados, segredos em variáveis de ambiente
+- **Performance:** imagens otimizadas (WebP/AVIF, _lazy loading_), skeletons de carregamento, meta de Lighthouse ≥ 90 na home e na página de produto
+- **Segurança:** senhas com hash, proteção da área admin no servidor, validação de entrada e de uploads, _rate limit_ na autenticação, dados de cartão nunca armazenados, segredos em variáveis de ambiente
 - **Testes:** unitários para as regras de negócio, integração para a API e E2E para o fluxo de compra e o CRUD da administração
 - **DX:** script de seed com catálogo realista (40+ produtos), `.env.example` e setup local com um único comando
 
@@ -141,7 +144,7 @@ O projeto é um monorepo com o front (`apps/web`) e a API (`apps/api`) separados
 
 ## Como rodar localmente
 
-*Será documentado quando a stack for definida.*
+_Será documentado quando a stack for definida._
 
 ---
 

@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter web dev"
+    "dev": "pnpm --filter web dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devEngines": {
     "packageManager": {
@@ -12,5 +14,9 @@
       "onFail": "download"
     }
   },
-  "packageManager": "pnpm@12.11.2"
+  "packageManager": "pnpm@12.11.2",
+  "devDependencies": {
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.8.1"
+  }
 }

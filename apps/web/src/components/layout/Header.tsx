@@ -15,10 +15,10 @@ export function Header() {
                         <SFSymbol name="magnifyingglass" className="text-base" />
                     </div>
                     <div className="flex items-center gap-1 justify-self-end">
-                        <Link href="/gestao" aria-label="Gestão de produtos" className="flex size-12 items-center justify-center">
+                        <Link href="/admin" aria-label="Gestão de produtos" className="flex size-12 items-center justify-center">
                             <SFSymbol name="slider.horizontal.3" className="text-[19px]" />
                         </Link>
-                        <Link href="/carrinho" aria-label="Carrinho" className="flex h-12 items-center gap-1.5 px-3">
+                        <Link href="/cart" aria-label="Carrinho" className="flex h-12 items-center gap-1.5 px-3">
                             <SFSymbol name="bag" className="text-[19px]" />
                             <span className="font-condensed text-[19px] font-semibold">0</span>
                         </Link>

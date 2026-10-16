@@ -72,15 +72,15 @@ Todos os valores do mockup foram conferidos com estas regras, e cada uma delas t
 | Rota | Página | Acesso |
 |---|---|---|
 | `/` | Home | público |
-| `/busca?q=…` | Resultados da busca | público |
-| `/categoria/:slug` | Listagem por categoria | público |
-| `/produto/:slug?cor=…` | Detalhes do produto | público |
-| `/carrinho` | Carrinho | público |
+| `/search?q=…` | Resultados da busca | público |
+| `/category/:slug` | Listagem por categoria | público |
+| `/product/:slug?color=…` | Detalhes do produto | público |
+| `/cart` | Carrinho | público |
 | `/checkout` | Checkout | usuário logado |
-| `/pedido/:numero/sucesso` | Pedido concluído | dono do pedido |
-| `/minhas-compras` | Histórico de pedidos | usuário logado |
-| `/entrar`, `/cadastro` | Autenticação | público |
-| `/gestao` | Gestão de produtos | admin |
+| `/orders/:number/success` | Pedido concluído | dono do pedido |
+| `/orders` | Histórico de pedidos | usuário logado |
+| `/login`, `/signup` | Autenticação | público |
+| `/admin` | Gestão de produtos | admin |
 
 ---
 

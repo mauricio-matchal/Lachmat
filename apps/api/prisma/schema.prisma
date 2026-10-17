@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Gender {
+  MASCULINO
+  FEMININO
+  UNISSEX
+}
+
+enum Fabric {
+  ALGODAO
+  POLIESTER
+  LINHO
+  SEDA
+  LA
+  VISCOSA
+  NYLON
+  ACRILICO
+  RAYON
+  TEXTIL
+}
+
+model Product {
+  id          String    @id @default(cuid()) // PK
+  slug        String    @unique
+  name        String
+  description String
+  //
+  sku         String    @unique
+  model       String
+  gender      Gender
+  fabric      Fabric
+  price       Int // in cents: R$ 161,49 = 16149
+  promoPrice  Int?
+  pixPrice    Int?
+  isLaunch    Boolean   @default(false)
+  ratingAvg   Float     @default(0)
+  ratingCount Int       @default(0)
+  categoryId  String
+  category    Category  @relation(fields: [categoryId], references: [id]) // FK
+  variants    Variant[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  @@index([categoryId])
+}
+
+model Category {
+  id       String    @id @default(cuid()) // PK
+  slug     String    @unique
+  name     String
+  //
+  products Product[]
+}
+
+model Variant {
+  id        String   @id @default(cuid()) // PK
+  name String
+  //
+  colorHex  String
+  images    String[]
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade) // FK
+  sizes     Size[]
+
+  @@index([productId])
+}
+
+model Size {
+  id        String  @id @default(cuid()) // PK
+  name      String
+  //
+  stock     Int     @default(0)
+  variantId String
+  variant   Variant @relation(fields: [variantId], references: [id], onDelete: Cascade) // FK
+
+  @@unique([variantId, name])
+}

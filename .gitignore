@@ -2,3 +2,6 @@ planning/
 .DS_Store
 node_modules/
 AGENTS.md
+dist/
+*.tsbuildinfo
+.env

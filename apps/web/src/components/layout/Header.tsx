@@ -6,7 +6,7 @@ import { CartButton } from "./CartButton";
 export function Header() {
   return (
     <>
-      <header className="bg-white">
+      <header className="sticky -top-17 z-50 bg-white">
         <div className="mx-auto grid h-17 max-w-[1360px] grid-cols-[1fr_auto_1fr] items-center px-12">
           <Link
             href="/"

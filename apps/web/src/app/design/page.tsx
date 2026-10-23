@@ -9,6 +9,7 @@ const textStyles: {
   weight: number;
   size: string;
   lineHeight: string;
+  letterSpacing: string;
   note?: string;
 }[] = [
   {
@@ -18,6 +19,7 @@ const textStyles: {
     weight: 800,
     size: "32px",
     lineHeight: "1.15",
+    letterSpacing: "0",
   },
   {
     className: "type-title-2",
@@ -26,6 +28,7 @@ const textStyles: {
     weight: 800,
     size: "28px",
     lineHeight: "1.15",
+    letterSpacing: "-1px",
   },
   {
     className: "type-title-3",
@@ -34,7 +37,8 @@ const textStyles: {
     weight: 900,
     size: "24px",
     lineHeight: "1.2",
-    note: "SF Pro Black com largura (wdth) 112, entre a Regular (100) e a Expanded (132). Ver planning/scripts/build_fonts.py",
+    letterSpacing: "-0.4px",
+    note: "SF Pro Black, largura 112",
   },
   {
     className: "type-button",
@@ -43,6 +47,7 @@ const textStyles: {
     weight: 500,
     size: "16px",
     lineHeight: "1.25",
+    letterSpacing: "-0.3px",
   },
   {
     className: "type-subbutton",
@@ -51,6 +56,7 @@ const textStyles: {
     weight: 500,
     size: "16px",
     lineHeight: "1.25",
+    letterSpacing: "-0.3px",
   },
   {
     className: "type-body",
@@ -59,6 +65,7 @@ const textStyles: {
     weight: 400,
     size: "16px",
     lineHeight: "1.35",
+    letterSpacing: "-0.4px",
   },
   {
     className: "type-subbody",
@@ -67,6 +74,7 @@ const textStyles: {
     weight: 400,
     size: "16px",
     lineHeight: "1.35",
+    letterSpacing: "-0.4px",
   },
   {
     className: "type-footnote",
@@ -75,6 +83,7 @@ const textStyles: {
     weight: 400,
     size: "16px",
     lineHeight: "1.3",
+    letterSpacing: "0",
   },
   {
     className: "type-subfootnote",
@@ -83,6 +92,7 @@ const textStyles: {
     weight: 600,
     size: "14px",
     lineHeight: "1.3",
+    letterSpacing: "0",
   },
   {
     className: "type-caption",
@@ -91,6 +101,7 @@ const textStyles: {
     weight: 400,
     size: "14px",
     lineHeight: "1.3",
+    letterSpacing: "-0.3px",
   },
 ];
 
@@ -127,7 +138,7 @@ export default function DesignPage() {
             </div>
             <p className="shrink-0 type-caption text-ink/50">
               {style.size} · peso {style.weight} · altura da linha{" "}
-              {style.lineHeight}
+              {style.lineHeight} · tracking {style.letterSpacing}
             </p>
           </div>
         ))}

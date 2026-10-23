@@ -16,6 +16,20 @@ export type Product = {
   };
 };
 
+export type ProductDetail = Product & {
+  sku: string;
+  sizes: { id: string; name: string; stock: number }[];
+  line: Product["line"] & {
+    description: string;
+    products: {
+      slug: string;
+      colorName: string;
+      colorHex: string;
+      images: string[];
+    }[];
+  };
+};
+
 export async function getProducts(): Promise<Product[]> {
   const response = await fetch(`${process.env.API_URL}/products`, {
     next: { revalidate: 60 },
@@ -25,6 +39,26 @@ export async function getProducts(): Promise<Product[]> {
   if (!response.ok) {
     throw new Error(
       `Failed to load products: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  return response.json();
+}
+
+export async function getProductBySlug(
+  slug: string,
+): Promise<ProductDetail | null> {
+  // encodeURIComponent é usado caso um slug com "/" ou "?" não altera o caminho da chamada à API por ex chamando rotas com niveis que nem existem
+  const response = await fetch(
+    `${process.env.API_URL}/products/${encodeURIComponent(slug)}`,
+    {
+      next: { revalidate: 60 },
+    },
+  );
+  if (response.status === 404) return null;
+  if (!response.ok) {
+    throw new Error(
+      `Failed to load product: ${response.status} ${response.statusText}`,
     );
   }
 

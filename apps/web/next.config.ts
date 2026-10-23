@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // 90 for the product gallery, where compression banding shows on flat colors
+    qualities: [75, 90],
+  },
   turbopack: {
     rules: {
       "*.css": {

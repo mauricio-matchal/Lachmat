@@ -7,7 +7,7 @@ export function Header() {
   return (
     <>
       <header className="bg-white">
-        <div className="mx-auto grid h-20 max-w-[1320px] grid-cols-[1fr_auto_1fr] items-center px-12">
+        <div className="mx-auto grid h-17 max-w-[1360px] grid-cols-[1fr_auto_1fr] items-center px-12">
           <Link
             href="/"
             aria-label="Página inicial"
@@ -31,7 +31,7 @@ export function Header() {
           </div>
         </div>
         <nav className="bg-black text-white">
-          <ul className="mx-auto flex max-w-[1320px] flex-row justify-center gap-9 py-4 type-footnote">
+          <ul className="mx-auto flex max-w-[1360px] flex-row justify-center gap-9 py-4 type-footnote">
             <li>
               <Link href="/new-arrivals">Lançamentos</Link>
             </li>

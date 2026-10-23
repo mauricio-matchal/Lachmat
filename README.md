@@ -77,7 +77,7 @@ Todos os valores do mockup foram conferidos com estas regras, e cada uma delas t
 | `/`                       | Home                   | público        |
 | `/search?q=…`             | Resultados da busca    | público        |
 | `/category/:slug`         | Listagem por categoria | público        |
-| `/product/:slug?color=…`  | Detalhes do produto    | público        |
+| `/:slug/p?color=…`        | Detalhes do produto    | público        |
 | `/cart`                   | Carrinho               | público        |
 | `/checkout`               | Checkout               | usuário logado |
 | `/orders/:number/success` | Pedido concluído       | dono do pedido |

@@ -25,14 +25,16 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div>
-          <s className="type-button text-ink opacity-60">
-            {formatPrice(product.price)}
-          </s>
+          {product.promoPrice !== null && (
+            <s className="type-button text-ink opacity-60">
+              {formatPrice(product.price)}
+            </s>
+          )}
           <div className="flex flex-row items-end gap-3">
             <p className="type-title-3">
               {formatPrice(product.promoPrice ?? product.price)}
             </p>
-            {product.promoPrice && (
+            {product.promoPrice !== null && (
               <p className="font-condensed font-black text-discount">
                 {calculateDiscountPercentage(product.price, product.promoPrice)}
                 % OFF

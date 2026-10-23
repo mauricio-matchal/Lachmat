@@ -21,5 +21,6 @@ export function calculateDiscountPercentage(
     throw new Error("Original price must be greater than zero.");
   }
 
-  return Math.round(((originalPrice - discountedPrice) / originalPrice) * 100);
+  // Rounded down, as in the Figma (29.57% → 29%): never advertise more than the real discount
+  return Math.floor(((originalPrice - discountedPrice) / originalPrice) * 100);
 }

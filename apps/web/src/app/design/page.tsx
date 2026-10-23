@@ -2,7 +2,15 @@ import { LogoSymbol, LogoWordmark } from "@/components/brand/logo";
 import { SFSymbol } from "@/components/icons/SFSymbol";
 
 // Specs mirror the type-* utilities in globals.css; keep both in sync
-const textStyles = [
+const textStyles: {
+  className: string;
+  label: string;
+  sample: string;
+  weight: number;
+  size: string;
+  lineHeight: string;
+  note?: string;
+}[] = [
   {
     className: "type-title",
     label: "Title",
@@ -26,6 +34,7 @@ const textStyles = [
     weight: 900,
     size: "24px",
     lineHeight: "1.2",
+    note: "SF Pro Black com largura (wdth) 112, entre a Regular (100) e a Expanded (132). Ver planning/scripts/build_fonts.py",
   },
   {
     className: "type-button",
@@ -112,6 +121,9 @@ export default function DesignPage() {
                 {style.label} · <code>.{style.className}</code>
               </p>
               <p className={style.className}>{style.sample}</p>
+              {style.note && (
+                <p className="mt-1 type-caption text-discount">{style.note}</p>
+              )}
             </div>
             <p className="shrink-0 type-caption text-ink/50">
               {style.size} · peso {style.weight} · altura da linha{" "}

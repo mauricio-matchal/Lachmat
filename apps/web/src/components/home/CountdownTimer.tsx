@@ -85,7 +85,7 @@ function TimeBox({ value, unit }: { value: number; unit: string }) {
 // font weight and sit on the text baseline, while these are sized and centered exactly
 function Separator() {
   return (
-    <span aria-hidden="true" className="flex flex-col gap-[6px]">
+    <span aria-hidden="true" className="flex flex-col gap-[5px]">
       <span className="size-1.5 rounded-full bg-ink" />
       <span className="size-1.5 rounded-full bg-ink" />
     </span>

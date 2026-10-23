@@ -5,3 +5,5 @@ AGENTS.md
 dist/
 *.tsbuildinfo
 .env
+.postman/
+postman/

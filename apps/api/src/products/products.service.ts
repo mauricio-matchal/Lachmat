@@ -9,8 +9,8 @@ export class ProductsService {
     return this.prisma.product.findMany({
       where: { deletedAt: null },
       include: {
-        category: true,
-        variants: { include: { sizes: true } },
+        line: { include: { category: true } },
+        sizes: true,
       },
       orderBy: { createdAt: "desc" },
     });

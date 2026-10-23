@@ -31,51 +31,58 @@ enum Fabric {
   TEXTIL
 }
 
-model Product {
+// A product line groups the colors of the same item (e.g. "Camiseta Hyverse
+// Dri-FIT Masculina"), like Nike's styles: shared description and attributes
+model ProductLine {
   id          String    @id @default(cuid()) // PK
   slug        String    @unique
   name        String
   description String
   //
-  sku         String    @unique
   model       String
   gender      Gender
   fabric      Fabric
-  price       Int // in cents: R$ 161,49 = 16149
-  promoPrice  Int?
-  pixPrice    Int?
-  isLaunch    Boolean   @default(false)
   ratingAvg   Float     @default(0)
   ratingCount Int       @default(0)
   categoryId  String
   category    Category  @relation(fields: [categoryId], references: [id]) // FK
-  variants    Variant[]
+  products    Product[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  deletedAt   DateTime?
 
   @@index([categoryId])
 }
 
-model Category {
-  id       String    @id @default(cuid()) // PK
-  slug     String    @unique
-  name     String
+// A product is one color of a line of products: it has its own page, SKU, photos and
+// prices, and appears as its own card in listings
+model Product {
+  id         String      @id @default(cuid()) // PK
+  slug       String      @unique
+  sku        String      @unique
   //
-  products Product[]
+  colorName  String
+  colorHex   String
+  images     String[] // first image is the cover
+  price      Int // in cents: R$ 161,49 = 16149
+  promoPrice Int?
+  pixPrice   Int?
+  isLaunch   Boolean     @default(false)
+  lineId     String
+  line       ProductLine @relation(fields: [lineId], references: [id]) // FK
+  sizes      Size[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  deletedAt  DateTime?
+
+  @@index([lineId])
 }
 
-model Variant {
-  id        String   @id @default(cuid()) // PK
-  name String
+model Category {
+  id    String        @id @default(cuid()) // PK
+  slug  String        @unique
+  name  String
   //
-  colorHex  String
-  images    String[]
-  productId String
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade) // FK
-  sizes     Size[]
-
-  @@index([productId])
+  lines ProductLine[]
 }
 
 model Size {
@@ -83,8 +90,8 @@ model Size {
   name      String
   //
   stock     Int     @default(0)
-  variantId String
-  variant   Variant @relation(fields: [variantId], references: [id], onDelete: Cascade) // FK
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade) // FK
 
-  @@unique([variantId, name])
+  @@unique([productId, name])
 }

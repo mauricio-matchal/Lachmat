@@ -17,11 +17,12 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
   const colors = product.line.products;
 
   return (
-    <article className="mx-auto flex max-w-[1360px] flex-col items-start gap-12 py-9">
+    <article className="mx-auto flex max-w-[1320px] flex-col gap-10 py-8">
       <BackButton />
 
-      <div className="flex flex-row gap-12">
-        <div className="mt-7 flex w-[395px] shrink-0 flex-col gap-5">
+      <div className="flex flex-row gap-10">
+        {/* sticks below the header's black bar (53px) + the same 28px as mt-7, until the gallery ends */}
+        <div className="sticky top-[81px] mt-7 flex w-[420px] shrink-0 flex-col gap-5 self-start">
           {/* descrição do produto */}
           <header className="flex flex-col gap-3">
             <h1 className="type-title text-[22px]">{product.line.name}</h1>
@@ -45,7 +46,7 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
             )}
             {/* no pix */}
             <h2 className="flex items-baseline gap-4">
-              <span className="type-body text-[18px]">
+              <span className="type-body text-[18px] font-medium">
                 {formatPrice(pixPrice)} no Pix
               </span>
               {pixPrice < product.price && (
@@ -89,7 +90,7 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
                       {isCurrent && (
                         <span
                           aria-hidden="true"
-                          className="absolute inset-0 flex items-center justify-center bg-ink/20 text-center type-subbutton text-[14px] font-bold text-white uppercase"
+                          className="absolute inset-0 flex items-center justify-center bg-ink/30 text-center type-subbutton text-[16px] font-bold text-white uppercase"
                         >
                           {color.colorName}
                         </span>
@@ -126,8 +127,7 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
               height={1920}
               sizes="808px"
               loading="eager"
-              quality={100}
-              className="h-full min-w-0 flex-1 border-x-4 border-transparent object-cover transition-[flex-grow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:flex-[4.5] hover:cursor-pointer motion-reduce:transition-none"
+              className="h-full min-w-0 flex-1 border-x-4 border-transparent object-cover transition-[flex-grow] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] hover:flex-[3] hover:cursor-pointer motion-reduce:transition-none"
             />
           ))}
         </div>

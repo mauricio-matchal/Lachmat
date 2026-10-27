@@ -13,7 +13,7 @@ export default function BackButton() {
   };
 
   return (
-    <button className="type-footnote hover:cursor-pointer" onClick={handlePop}>
+    <button className="type-footnote hover:cursor-pointer self-start" onClick={handlePop}>
       Página anterior
     </button>
   );

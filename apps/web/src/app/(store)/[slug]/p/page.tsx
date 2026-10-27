@@ -127,7 +127,6 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
               height={1920}
               sizes="808px"
               loading="eager"
-              quality={90}
               className="h-full min-w-0 flex-1 border-x-4 border-transparent object-cover transition-[flex-grow] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] hover:flex-[3] hover:cursor-pointer motion-reduce:transition-none"
             />
           ))}

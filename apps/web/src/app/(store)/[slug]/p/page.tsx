@@ -5,6 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { StarRating } from "@/components/product/StarRating";
 import BackButton from "@/components/layout/BackButton";
+import { Button } from "@/components/ui/button";
+import { SizeSelector } from "@/components/product/SizeSelector";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 
 export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
   const { slug } = await params;
@@ -21,55 +29,58 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
       <BackButton />
 
       <div className="flex flex-row gap-10">
-        {/* sticks below the header's black bar (53px) + the same 28px as mt-7, until the gallery ends */}
-        <div className="sticky top-[81px] mt-7 flex w-[420px] shrink-0 flex-col gap-5 self-start">
-          {/* descrição do produto */}
-          <header className="flex flex-col gap-3">
-            <h1 className="type-title text-[22px]">{product.line.name}</h1>
-            <div className="flex flex-row gap-4">
-              <p className="type-body">{product.line.category.name}</p>
-              <p className="type-subbody">{product.sku}</p>
-            </div>
-            <div className="flex flex-row items-end gap-4">
-              <StarRating rating={3.8} />
-              <button className="type-subbutton">
-                Ver todas as 6 avaliações
-              </button>
-            </div>
-          </header>
-          {/* preço */}
-          <div className="flex flex-col gap-1.5">
-            {product.promoPrice !== null && (
-              <s className="type-body opacity-60">
-                {formatPrice(product.price)}
-              </s>
-            )}
-            {/* no pix */}
-            <h2 className="flex items-baseline gap-4">
-              <span className="type-body text-[18px] font-medium">
-                {formatPrice(pixPrice)} no Pix
-              </span>
-              {pixPrice < product.price && (
-                <span className="font-condensed text-[16px] font-black text-discount">
-                  {calculateDiscountPercentage(product.price, pixPrice)}% OFF
-                </span>
-              )}
-            </h2>
-            {/* preço normal */}
-            <p className="flex items-baseline gap-3.5">
-              <span className="type-caption">
-                ou {formatPrice(salePrice)} em até 3x sem juros
-              </span>
+        <div className="mt-7 flex w-[420px] shrink-0 flex-col gap-10 self-end">
+          <div className="flex flex-col gap-7">
+            {/* descrição do produto */}
+            <header className="flex flex-col gap-3">
+              <h1 className="type-title text-[22px]">{product.line.name}</h1>
+              <div className="flex flex-row gap-4">
+                <p className="type-body">{product.line.category.name}</p>
+                <p className="type-subbody">{product.sku}</p>
+              </div>
+              <div className="flex flex-row items-end gap-4">
+                <StarRating rating={3.8} />
+                <Button variant="link" size="sm">
+                  Ver todas as 6 avaliações
+                </Button>
+              </div>
+            </header>
+
+            {/* preço */}
+            <div className="flex flex-col gap-1.5">
               {product.promoPrice !== null && (
-                <span className="font-condensed text-[14px] font-black text-discount">
-                  {calculateDiscountPercentage(product.price, salePrice)}% OFF
-                </span>
+                <s className="type-body opacity-60">
+                  {formatPrice(product.price)}
+                </s>
               )}
-            </p>
+              {/* no pix */}
+              <h2 className="flex items-baseline gap-4">
+                <span className="type-body text-[18px] font-medium">
+                  {formatPrice(pixPrice)} no Pix
+                </span>
+                {pixPrice < product.price && (
+                  <span className="font-condensed text-[16px] font-black text-discount">
+                    {calculateDiscountPercentage(product.price, pixPrice)}% OFF
+                  </span>
+                )}
+              </h2>
+              {/* preço normal */}
+              <p className="flex items-baseline gap-3.5">
+                <span className="type-caption">
+                  ou {formatPrice(salePrice)} em até 3x sem juros
+                </span>
+                {product.promoPrice !== null && (
+                  <span className="font-condensed text-[14px] font-black text-discount">
+                    {calculateDiscountPercentage(product.price, salePrice)}% OFF
+                  </span>
+                )}
+              </p>
+            </div>
           </div>
+
           {/* cores */}
           <nav aria-label="Cores">
-            <ul className="flex flex-wrap gap-2 pt-4 pb-7">
+            <ul className="flex flex-wrap gap-2">
               {colors.map((color) => {
                 const isCurrent = color.slug === product.slug;
                 return (
@@ -101,18 +112,39 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
               })}
             </ul>
           </nav>
+
           {/* frete de entrega */}
-          <h3 className="type-body">Calcule o frete e entrega</h3>
-          {/* TO DO: FAZER OS COMPONENTES DE FORM E COLOCAR AQUI E ESCOLHA UM TAMANHO TAMBEM */}
-          <div className="grid grid-cols-2 gap-2.5">
-            <button className="bg-ink py-3 type-footnote text-[18px] text-white">
-              Comprar agora
-            </button>
-            <button className="bg-surface py-3 type-footnote text-[18px]">
-              Adicionar ao carrinho
-            </button>
+          <div className="flex flex-col gap-4">
+            <h3 className="type-body">Calcule o frete e entrega</h3>
+            <InputGroup>
+              <InputGroupInput placeholder="Seu CEP" mask="cep" />
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton>Calcular o frete</InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+            <Button variant="ghost" className="-mt-1.5 self-start px-2 text-base">
+              Não sei meu CEP
+            </Button>
+          </div>
+
+          {/* tamanho + botões de compra: o bloco da compra, um pouco mais afastado do resto */}
+          <div className="flex flex-col gap-12">
+            {/* escolha de tamanhos */}
+            <div className="flex flex-col gap-4">
+              <h3 className="type-body">Escolha um tamanho</h3>
+              <SizeSelector sizes={product.sizes} />
+              <Button variant="ghost" className="-mt-1.5 self-start px-2 text-base">
+                Guia de tamanhos...
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2.5">
+              <Button>Comprar agora</Button>
+              <Button variant="secondary">Adicionar ao carrinho</Button>
+            </div>
           </div>
         </div>
+
         {/* galeria: fotos com a mesma largura; a foto em hover fica mais larga.
           O espaço entre as fotos é uma borda transparente, e não um gap: assim
           não há um vão sem hover entre elas, e a animação não "pisca" */}

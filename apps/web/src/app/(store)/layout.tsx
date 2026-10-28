@@ -5,7 +5,7 @@ export default function StoreLayout({ children }: LayoutProps<"/">) {
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pb-10">{children}</main>
       <Footer />
     </>
   );

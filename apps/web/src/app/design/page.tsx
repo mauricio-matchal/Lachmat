@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LogoSymbol, LogoWordmark } from "@/components/brand/logo";
 import { SFSymbol } from "@/components/icons/SFSymbol";
 
@@ -119,7 +120,12 @@ const colors = [
 export default function DesignPage() {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-12">
-      <h1 className="mb-10 type-title">Design system</h1>
+      <div className="mb-10 flex items-baseline justify-between">
+        <h1 className="type-title">Design system</h1>
+        <Link href="/design/components" className="type-footnote">
+          Componentes
+        </Link>
+      </div>
 
       <section className="mb-12 flex flex-col gap-6">
         {textStyles.map((style) => (

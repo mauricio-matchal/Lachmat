@@ -8,6 +8,7 @@ const symbols = {
   bag: "\u{100363}",
   "slider.horizontal.3": "\u{100306}",
   "star.fill": "\u{1002C3}",
+  asterisk: "\u{100E13}",
 } as const;
 
 export type SFSymbolName = keyof typeof symbols;

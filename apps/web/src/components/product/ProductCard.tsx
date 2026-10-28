@@ -2,6 +2,7 @@ import type { Product } from "@/lib/api";
 import { formatPrice, calculateDiscountPercentage } from "@/lib/price";
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function ProductCard({ product }: { product: Product }) {
   const imageUrl = product.images[0];
@@ -43,10 +44,9 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
       </Link>
-      {/* for now a button, later create a component for that */}
-      <button className="bg-muted-button py-2.5 type-subbutton">
+      <Button variant="muted" size="sm">
         Adicionar ao carrinho
-      </button>
+      </Button>
     </article>
   );
 }

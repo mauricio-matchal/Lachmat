@@ -18,9 +18,9 @@ Lachmat é um projeto de portfólio: a implementação fiel de um design do Figm
 - **Busca e catálogo** — busca tolerante a acentos e erros de digitação, com filtros (cor, tamanho, categoria, preço, gênero e tecido), ordenação e paginação, tudo refletido na URL (compartilhável e compatível com o botão voltar)
 - **Páginas de categoria** — Lançamentos, Ofertas, Masculino, Feminino, Academia, Corrida, Skateboarding e Casual
 - **Página de produto** — galeria de imagens, variações de cor, seletor de tamanho com estoque, cálculo de frete por CEP, preço no Pix e parcelado, recomendações
-- **Carrinho** — controle de quantidade, cupom promocional e totais; persistente para visitantes e sincronizado para usuários logados
-- **Checkout** (exige login) — endereços com preenchimento automático por CEP, pagamento simulado com cartão (pré-visualização ao vivo, parcelamento) ou Pix (QR code com expiração)
-- **Confirmação do pedido** e **Minhas Compras** (histórico de pedidos)
+- **Carrinho** — controle de quantidade, cupom promocional e totais; salvo no navegador
+- **Checkout** (sem cadastro) — endereço com preenchimento automático por CEP, pagamento simulado com cartão (pré-visualização ao vivo, parcelamento) ou Pix (QR code com expiração)
+- **Confirmação do pedido** e **Acompanhar pedido** (por e-mail e número do pedido)
 
 ### Administração ("Gestão")
 
@@ -79,10 +79,9 @@ Todos os valores do mockup foram conferidos com estas regras, e cada uma delas t
 | `/category/:slug`         | Listagem por categoria | público        |
 | `/:slug/p?color=…`        | Detalhes do produto    | público        |
 | `/cart`                   | Carrinho               | público        |
-| `/checkout`               | Checkout               | usuário logado |
+| `/checkout`               | Checkout               | público        |
 | `/orders/:number/success` | Pedido concluído       | dono do pedido |
-| `/orders`                 | Histórico de pedidos   | usuário logado |
-| `/login`, `/signup`       | Autenticação           | público        |
+| `/orders`                 | Acompanhar pedido      | público        |
 | `/admin`                  | Gestão de produtos     | admin          |
 
 ---
@@ -90,17 +89,15 @@ Todos os valores do mockup foram conferidos com estas regras, e cada uma delas t
 ## Modelo de dados
 
 ```
-User ─┬─ Address
-      ├─ Cart ── CartItem ── VariantSize
-      ├─ Order ── OrderItem
-      └─ Review
+Order ── OrderItem          (dados do cliente e endereço no próprio pedido)
+User                        (só administradores)
 
 Category ── Product ── ProductVariant (cor + imagens) ── VariantSize (tamanho + estoque)
 
 PromoCode · FlashDeal · Campaign
 ```
 
-Exclusão lógica de produtos, SKU único e controle de acesso por papel (`CUSTOMER` / `ADMIN`) validado no servidor.
+Exclusão lógica de produtos, SKU único e área de administração protegida no servidor.
 
 ---
 
@@ -135,8 +132,8 @@ O projeto é um monorepo com o front (`apps/web`) e a API (`apps/api`) separados
 - [ ] **Fase 3 — Dados e API:** schema, migrations, seed, listagem com filtros e busca, testes das regras de negócio
 - [ ] **Fase 4 — Navegação na loja:** home, busca, categorias, página de produto, skeletons e 404
 - [ ] **Fase 5 — Carrinho:** persistência, cupom promocional e estado vazio
-- [ ] **Fase 6 — Autenticação e checkout:** login, endereços com CEP, pagamento, criação do pedido e Minhas Compras
-- [ ] **Fase 7 — Administração:** grade de produtos, criação e edição com upload, exclusão lógica
+- [ ] **Fase 6 — Checkout:** endereço com CEP, pagamento, criação do pedido e acompanhamento do pedido
+- [ ] **Fase 7 — Administração:** login do admin, grade de produtos, criação e edição com upload, exclusão lógica
 - [ ] **Fase 8 — Polimento:** versões mobile, animações, acessibilidade, performance e SEO
 - [ ] **Fase 9 — Lançamento:** deploy em produção, dados de demonstração, capturas de tela e vídeo de apresentação
 

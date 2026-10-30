@@ -8,6 +8,7 @@ export const fixtureExpanded = localFont({
 
 export const sfPro = localFont({
   src: [
+    { path: "./sf-pro-light.woff2", weight: "300" },
     { path: "./sf-pro-regular.woff2", weight: "400" },
     { path: "./sf-pro-medium.woff2", weight: "500" },
   ],

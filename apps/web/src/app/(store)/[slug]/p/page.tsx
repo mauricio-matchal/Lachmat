@@ -13,6 +13,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import ProductGallery from "@/components/product/ProductGallery";
 
 export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
   const { slug } = await params;
@@ -122,7 +123,7 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
                 <InputGroupButton>Calcular o frete</InputGroupButton>
               </InputGroupAddon>
             </InputGroup>
-            <Button variant="ghost" className="-mt-1.5 self-start px-2 text-base">
+            <Button variant="ghost" className="-mt-2 self-start px-2 text-base">
               Não sei meu CEP
             </Button>
           </div>
@@ -133,7 +134,10 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
             <div className="flex flex-col gap-4">
               <h3 className="type-body">Escolha um tamanho</h3>
               <SizeSelector sizes={product.sizes} />
-              <Button variant="ghost" className="-mt-1.5 self-start px-2 text-base">
+              <Button
+                variant="ghost"
+                className="-mt-2 self-start px-2 text-base"
+              >
                 Guia de tamanhos...
               </Button>
             </div>
@@ -145,24 +149,10 @@ export default async function ProductPage({ params }: PageProps<"/[slug]/p">) {
           </div>
         </div>
 
-        {/* galeria: fotos com a mesma largura; a foto em hover fica mais larga.
-          O espaço entre as fotos é uma borda transparente, e não um gap: assim
-          não há um vão sem hover entre elas, e a animação não "pisca" */}
-        <div className="-mx-1 flex h-[808px] flex-1">
-          {product.images.map((image, index) => (
-            <Image
-              unoptimized
-              key={image}
-              src={image}
-              alt={`${product.line.name} ${product.colorName}, foto ${index + 1} de ${product.images.length}`}
-              width={1920}
-              height={1920}
-              sizes="808px"
-              loading="eager"
-              className="h-full min-w-0 flex-1 border-x-4 border-transparent object-cover transition-[flex-grow] duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] hover:flex-[3] hover:cursor-pointer motion-reduce:transition-none"
-            />
-          ))}
-        </div>
+        <ProductGallery
+          images={product.images}
+          name={`${product.line.name} ${product.colorName}`}
+        />
       </div>
     </article>
   );
